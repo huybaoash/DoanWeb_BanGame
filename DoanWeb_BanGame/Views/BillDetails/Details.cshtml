@@ -1,0 +1,51 @@
+﻿@model DoanWeb_BanGame.Models.BillDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BillDetail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Bill.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bill.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Game.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Game.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sale.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sale.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
