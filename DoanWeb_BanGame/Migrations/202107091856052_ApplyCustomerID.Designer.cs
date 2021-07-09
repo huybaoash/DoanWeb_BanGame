@@ -6,14 +6,14 @@ namespace DoanWeb_BanGame.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class InitialModel : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class ApplyCustomerID : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ApplyCustomerID));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107070644130_InitialModel"; }
+            get { return "202107091856052_ApplyCustomerID"; }
         }
         
         string IMigrationMetadata.Source

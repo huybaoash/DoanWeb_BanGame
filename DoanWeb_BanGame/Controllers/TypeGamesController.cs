@@ -6,15 +6,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-
-
-using System.Security.Claims;
-using System.Threading.Tasks;
-
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-
 using DoanWeb_BanGame.Models;
 
 namespace DoanWeb_BanGame.Controllers

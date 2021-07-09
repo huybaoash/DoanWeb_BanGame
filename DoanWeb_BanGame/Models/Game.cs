@@ -11,12 +11,17 @@ namespace DoanWeb_BanGame.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Tên trò chơi")]
         public string Name { get; set; }
         public string Image { get; set; }
         public string Trailer { get; set; }
+        [Display(Name = "Ngày ra mắt")]
         public DateTime PublishDay { get; set; }
+        [Display(Name = "Mô tả")]
         public string Description { get; set; }
+        [Display(Name = "Cấu hình đề nghị")]
         public string SystemRequirememts { get; set; }
+        [Display(Name = "Giá gốc")]
         public decimal Cost { get; set; }
         [ForeignKey("Producer")]
         public int ProducerId { get; set; }

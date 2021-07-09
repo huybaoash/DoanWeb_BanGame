@@ -7,13 +7,13 @@ namespace DoanWeb_BanGame.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialModelBeta3 : IMigrationMetadata
+    public sealed partial class ApplyDisplayNameAllModel : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialModelBeta3));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ApplyDisplayNameAllModel));
         
         string IMigrationMetadata.Id
         {
-            get { return "202107070913189_InitialModelBeta3"; }
+            get { return "202107091833206_ApplyDisplayNameAllModel"; }
         }
         
         string IMigrationMetadata.Source

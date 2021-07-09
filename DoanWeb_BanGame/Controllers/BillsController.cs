@@ -17,7 +17,8 @@ namespace DoanWeb_BanGame.Controllers
         // GET: Bills
         public ActionResult Index()
         {
-            return View(db.Bills.ToList());
+            var bills = db.Bills.Include(b => b.Customer);
+            return View(bills.ToList());
         }
 
         // GET: Bills/Details/5
@@ -27,17 +28,20 @@ namespace DoanWeb_BanGame.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Bill bill = db.Bills.Find(id);
             if (bill == null)
             {
                 return HttpNotFound();
             }
+            
             return View(bill);
         }
 
         // GET: Bills/Create
         public ActionResult Create()
         {
+            ViewBag.CustomerID = new SelectList(db.Users, "Id", "UserName");
             return View();
         }
 
@@ -46,7 +50,7 @@ namespace DoanWeb_BanGame.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( Bill bill)
+        public ActionResult Create([Bind(Include = "Id,CreateDay,CustomerID")] Bill bill)
         {
             if (ModelState.IsValid)
             {
@@ -55,6 +59,7 @@ namespace DoanWeb_BanGame.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CustomerID = new SelectList(db.Users, "Id", "UserName", bill.CustomerID);
             return View(bill);
         }
 
@@ -70,6 +75,7 @@ namespace DoanWeb_BanGame.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CustomerID = new SelectList(db.Users, "Id", "UserName", bill.CustomerID);
             return View(bill);
         }
 
@@ -78,7 +84,7 @@ namespace DoanWeb_BanGame.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CreateDay")] Bill bill)
+        public ActionResult Edit([Bind(Include = "Id,CreateDay,CustomerID")] Bill bill)
         {
             if (ModelState.IsValid)
             {
@@ -86,6 +92,7 @@ namespace DoanWeb_BanGame.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CustomerID = new SelectList(db.Users, "Id", "UserName", bill.CustomerID);
             return View(bill);
         }
 

@@ -67,19 +67,33 @@ namespace DoanWeb_BanGame.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Tên người dùng")]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [Phone]
+        [Display(Name = "Số điện thoại")]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Confirm Email")]
+        [Compare("Email", ErrorMessage = "Email xác nhận không trùng với Email gốc")]
+        public string ConfirmEmail { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Mật khẩu phải có ít nhất 1 ký tự số và in hoa", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Compare("Password", ErrorMessage = "Mật khẩu xác nhận không trùng với Mật khẩu gốc")]
         public string ConfirmPassword { get; set; }
     }
 

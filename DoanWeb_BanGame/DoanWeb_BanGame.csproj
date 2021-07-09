@@ -174,7 +174,6 @@
     <Compile Include="Controllers\BillsController.cs" />
     <Compile Include="Controllers\GamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProducersController.cs" />
     <Compile Include="Controllers\PublishersController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
@@ -183,13 +182,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107070644130_InitialModel.cs" />
-    <Compile Include="Migrations\202107070644130_InitialModel.Designer.cs">
-      <DependentUpon>202107070644130_InitialModel.cs</DependentUpon>
+    <Compile Include="Migrations\202107091833206_ApplyDisplayNameAllModel.cs" />
+    <Compile Include="Migrations\202107091833206_ApplyDisplayNameAllModel.Designer.cs">
+      <DependentUpon>202107091833206_ApplyDisplayNameAllModel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202107070913189_InitialModelBeta3.cs" />
-    <Compile Include="Migrations\202107070913189_InitialModelBeta3.Designer.cs">
-      <DependentUpon>202107070913189_InitialModelBeta3.cs</DependentUpon>
+    <Compile Include="Migrations\202107091856052_ApplyCustomerID.cs" />
+    <Compile Include="Migrations\202107091856052_ApplyCustomerID.Designer.cs">
+      <DependentUpon>202107091856052_ApplyCustomerID.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -254,12 +253,6 @@
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
     <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Producers\Create.cshtml" />
@@ -272,11 +265,6 @@
     <Content Include="Views\Publishers\Details.cshtml" />
     <Content Include="Views\Publishers\Edit.cshtml" />
     <Content Include="Views\Publishers\Index.cshtml" />
-    <Content Include="Views\TypeGames\Create.cshtml" />
-    <Content Include="Views\TypeGames\Delete.cshtml" />
-    <Content Include="Views\TypeGames\Details.cshtml" />
-    <Content Include="Views\TypeGames\Edit.cshtml" />
-    <Content Include="Views\TypeGames\Index.cshtml" />
     <Content Include="Views\TypeGameDetails\Create.cshtml" />
     <Content Include="Views\TypeGameDetails\Delete.cshtml" />
     <Content Include="Views\TypeGameDetails\Details.cshtml" />
@@ -292,11 +280,6 @@
     <Content Include="Views\Sales\Details.cshtml" />
     <Content Include="Views\Sales\Edit.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
-    <Content Include="Views\Bills\Create.cshtml" />
-    <Content Include="Views\Bills\Delete.cshtml" />
-    <Content Include="Views\Bills\Details.cshtml" />
-    <Content Include="Views\Bills\Edit.cshtml" />
-    <Content Include="Views\Bills\Index.cshtml" />
     <Content Include="Views\BillDetails\Create.cshtml" />
     <Content Include="Views\BillDetails\Delete.cshtml" />
     <Content Include="Views\BillDetails\Details.cshtml" />
@@ -307,6 +290,16 @@
     <Content Include="Views\ApplicationUsers\Details.cshtml" />
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
+    <Content Include="Views\TypeGames\Create.cshtml" />
+    <Content Include="Views\TypeGames\Delete.cshtml" />
+    <Content Include="Views\TypeGames\Details.cshtml" />
+    <Content Include="Views\TypeGames\Edit.cshtml" />
+    <Content Include="Views\TypeGames\Index.cshtml" />
+    <Content Include="Views\Bills\Create.cshtml" />
+    <Content Include="Views\Bills\Delete.cshtml" />
+    <Content Include="Views\Bills\Details.cshtml" />
+    <Content Include="Views\Bills\Edit.cshtml" />
+    <Content Include="Views\Bills\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -325,11 +318,11 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202107070644130_InitialModel.resx">
-      <DependentUpon>202107070644130_InitialModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107091833206_ApplyDisplayNameAllModel.resx">
+      <DependentUpon>202107091833206_ApplyDisplayNameAllModel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202107070913189_InitialModelBeta3.resx">
-      <DependentUpon>202107070913189_InitialModelBeta3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202107091856052_ApplyCustomerID.resx">
+      <DependentUpon>202107091856052_ApplyCustomerID.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

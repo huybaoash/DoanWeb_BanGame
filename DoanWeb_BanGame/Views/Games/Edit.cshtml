@@ -45,7 +45,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.PublishDay, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PublishDay, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.PublishDay, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.TextBoxFor(model => model.PublishDay, new
+           {
+               @type = "date",
+               @class = "form-control datepicker"
+           })
                 @Html.ValidationMessageFor(model => model.PublishDay, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -53,7 +58,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -61,7 +66,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SystemRequirememts, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SystemRequirememts, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextAreaFor(model => model.SystemRequirememts, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SystemRequirememts, "", new { @class = "text-danger" })
             </div>
         </div>

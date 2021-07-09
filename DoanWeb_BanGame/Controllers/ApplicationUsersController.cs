@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using DoanWeb_BanGame.Models;
 
+
 namespace DoanWeb_BanGame.Controllers
 {
     public class ApplicationUsersController : Controller
