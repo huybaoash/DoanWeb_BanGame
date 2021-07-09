@@ -50,7 +50,7 @@ namespace DoanWeb_BanGame.Models
                 base.OnModelCreating(modelBuilder);
             }
 
-       
+        
     }
     
 }

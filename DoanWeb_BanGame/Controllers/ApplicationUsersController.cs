@@ -4,40 +4,22 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using DoanWeb_BanGame.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DoanWeb_BanGame.Controllers
 {
     public class ApplicationUsersController : Controller
     {
-        private readonly ApplicationDbContext db;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
-        private readonly UserManager<IdentityUser> ApplicationUsers;
-
-        public ApplicationUsersController(ApplicationDbContext context,
-                                     UserManager<IdentityUser> userManager)
-    {
-        db = context;
-        ApplicationUsers = userManager;
-    }
-
-    // GET: api/ApplicationUsers/5
-
-
-
-    // GET: ApplicationUsers
-   
-        public async Task<ActionResult> Index()
+        // GET: ApplicationUsers
+        public ActionResult Index()
         {
-            return View(await ApplicationUsers.Users.Cast<ApplicationUser>().ToListAsync());
+            return View(db.Users.ToList());
         }
 
-        /*
         // GET: ApplicationUsers/Details/5
         public ActionResult Details(string id)
         {
@@ -45,7 +27,7 @@ namespace DoanWeb_BanGame.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = ApplicationUsers.Find(id);
+            ApplicationUser applicationUser = db.Users.Find(id);
             if (applicationUser == null)
             {
                 return HttpNotFound();
@@ -68,7 +50,7 @@ namespace DoanWeb_BanGame.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.ApplicationUsers.Add(applicationUser);
+                db.Users.Add(applicationUser);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -83,7 +65,7 @@ namespace DoanWeb_BanGame.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
+            ApplicationUser applicationUser = db.Users.Find(id);
             if (applicationUser == null)
             {
                 return HttpNotFound();
@@ -114,7 +96,7 @@ namespace DoanWeb_BanGame.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
+            ApplicationUser applicationUser = db.Users.Find(id);
             if (applicationUser == null)
             {
                 return HttpNotFound();
@@ -127,8 +109,8 @@ namespace DoanWeb_BanGame.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            ApplicationUser applicationUser = db.ApplicationUsers.Find(id);
-            db.ApplicationUsers.Remove(applicationUser);
+            ApplicationUser applicationUser = db.Users.Find(id);
+            db.Users.Remove(applicationUser);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -140,6 +122,6 @@ namespace DoanWeb_BanGame.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }*/
+        }
     }
 }
