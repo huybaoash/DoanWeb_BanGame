@@ -30,10 +30,10 @@
         @Html.LabelFor(model => model.CreateDay, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             
-            @Html.TextBoxFor(model => model.CreateDay, new
+            @Html.EditorFor(model => model.CreateDay, new
            {
                @type = "date",
-               @class = "form-control datepicker"
+               @class = "form-control"
            })
             @Html.ValidationMessageFor(model => model.CreateDay, "", new { @class = "text-danger" })
         </div>

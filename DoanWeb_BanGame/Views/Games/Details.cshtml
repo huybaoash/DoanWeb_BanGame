@@ -1,4 +1,4 @@
-﻿@model DoanWeb_BanGame.Models.Game
+﻿@model DoanWeb_BanGame.ViewModel.GameViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -12,19 +12,33 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Producer.Name)
+            @Html.DisplayNameFor(model => model.TypeGameDetails)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Producer.Name)
+            @Html.DisplayFor(model => model.TypeGameDetails)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PlatformDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PlatformDetails)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProducerName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProducerName)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Publisher.Name)
+            @Html.DisplayNameFor(model => model.PublisherName)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Publisher.Name)
+            @Html.DisplayFor(model => model.PublisherName)
         </dd>
 
         <dt>
@@ -82,7 +96,13 @@
         <dd>
             @Html.DisplayFor(model => model.Cost)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Enable)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Enable)
+        </dd>
     </dl>
 </div>
 <p>

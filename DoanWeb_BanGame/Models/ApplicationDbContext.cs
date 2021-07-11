@@ -35,6 +35,8 @@ namespace DoanWeb_BanGame.Models
             public DbSet<TypeGame> TypeGames { get; set; }
 
             public DbSet<TypeGameDetails> TypeGameDetails { get; set; }
+            public DbSet<Platform> Platforms { get; set; }
+            public DbSet<PlatformDetails> PlatformDetails { get; set; }
 
             public ApplicationDbContext()
                 : base("DefaultConnection", throwIfV1Schema: false)

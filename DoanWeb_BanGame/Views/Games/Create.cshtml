@@ -44,10 +44,11 @@
             @Html.LabelFor(model => model.PublishDay, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @* @Html.EditorFor(model => model.PublishDay, new { htmlAttributes = new { @class = "form-control" } }) *@
-                @Html.TextBoxFor(model => model.PublishDay, new
+                @Html.EditorFor(model => model.PublishDay, new
            {
                @type = "date",
-               @class = "form-control datepicker"
+               @class = "form-control"
+               
            })
                 @Html.ValidationMessageFor(model => model.PublishDay, "", new { @class = "text-danger" })
             </div>

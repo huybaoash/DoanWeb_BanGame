@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DoanWeb_BanGame.Models;
+using DoanWeb_BanGame.ViewModel;
 
 namespace DoanWeb_BanGame.Controllers
 {
@@ -29,11 +30,82 @@ namespace DoanWeb_BanGame.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Game game = db.Games.Find(id);
+
+            // Lấy thể loại của game đó
+            List<TypeGameDetails> typeList = new List<TypeGameDetails>();
+                typeList = db.TypeGameDetails.ToList();
+
+            List<string> theloai = new List<string>();
+
+            for (int i = 0; i < typeList.Count; i++)
+            {
+
+                if (typeList[i].GameId == id)
+                {
+                    
+                        theloai.Add(db.TypeGames.Find(typeList[i].TypeGameId).Name);
+                   
+                }
+            }
+            if (theloai.Count == 0)
+            {
+                theloai.Add(" ");
+            }
+            string tl = theloai[0];
+            for (int i = 1; i < theloai.Count(); i++)
+            {
+                tl += "," + theloai[i] ;
+            }
+
+            // Lấy nền tảng của game đó
+
+            List<PlatformDetails> platformList = new List<PlatformDetails>();
+            platformList = db.PlatformDetails.ToList();
+
+            List<string> nentang = new List<string>();
+
+            for (int i = 0; i < platformList.Count; i++)
+            {
+
+                if (platformList[i].GameId == id)
+                {
+                   
+                        nentang.Add(db.Platforms.Find(platformList[i].PlatformId).Name);
+
+                }
+            }
+            if (nentang.Count == 0)
+            {
+                nentang.Add(" ");
+            }
+            string nt = nentang[0];
+            for (int i = 1; i < nentang.Count(); i++)
+            {
+                nt += "," + nentang[i];
+            }
+
+            GameViewModel viewGame = new GameViewModel()
+            {
+                Id = game.Id,
+                Name = game.Name,
+                Image = game.Image,
+                Trailer = game.Trailer,
+                PublishDay = game.PublishDay,
+                Description = game.Description,
+                SystemRequirememts = game.SystemRequirememts,
+                Cost = game.Cost,
+                ProducerName = db.Producers.Find(game.ProducerId).Name,
+                PublisherName = db.Publishers.Find(game.PublisherId).Name,
+                Enable = game.Enable,
+                TypeGameDetails = tl,
+                PlatformDetails = nt
+            };
+
             if (game == null)
             {
                 return HttpNotFound();
             }
-            return View(game);
+            return View(viewGame);
         }
 
         // GET: Games/Create

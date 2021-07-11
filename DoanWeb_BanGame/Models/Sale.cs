@@ -15,8 +15,12 @@ namespace DoanWeb_BanGame.Models
         [Display(Name = "Tỉ lệ khuyến mãi")]
         public int Rate { get; set; }
         [Display(Name = "Ngày bắt đầu")]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime StartDay { get; set; }
         [Display(Name = "Ngày kết thúc")]
+        [DataType(DataType.Date, ErrorMessage = "Date only")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime EndDay { get; set; }
     }
 }

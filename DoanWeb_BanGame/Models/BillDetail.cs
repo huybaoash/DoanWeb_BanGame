@@ -12,10 +12,12 @@ namespace DoanWeb_BanGame.Models
         [Key] public int Id { get; set; }
 
         [ForeignKey("Game")]
+        [Display(Name = "Mã Game")]
         public int GameId { get; set; }
         public Game Game { get; set; }
 
         [ForeignKey("Bill")]
+        [Display(Name = "Mã hóa đơn")]
         public int BillId { get; set; }
         public Bill Bill { get; set; }
 
@@ -24,6 +26,7 @@ namespace DoanWeb_BanGame.Models
         public decimal Cost { get; set; }
 
         [ForeignKey("Sale")]
+        [Display(Name = "Mã khuyến mãi")]
         public int SaleId { get; set; }
         public Sale Sale { get; set; }
 
