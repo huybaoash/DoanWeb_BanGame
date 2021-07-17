@@ -1,0 +1,48 @@
+﻿@model IQueryable<DoanWeb_BanGame.Models.BillDetail>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết hóa đơn</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Khách hàng
+        </th>
+        <th>
+            Game
+        </th>
+        <th>
+            Mã khuyến mãi
+        </th>
+        <th>
+            Giá
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bill.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Game.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sale.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+        </tr>
+    }
+
+</table>
+<p>
+
+    <a href="@Url.Action("Index", "Bills",new {})">Back to list</a>
+</p>

@@ -1,5 +1,5 @@
 ﻿@model DoanWeb_BanGame.Models.Game
-
+@using System.Linq
 @{
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,10 +8,10 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Games", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <h4>Game</h4>
     <hr />
@@ -26,26 +26,70 @@
         </div>
     </div>
 
+    <label class="control-label col-md-2" for="TypeGame">Thể loại:</label>
+    <div class="col-md-10">
+        <fieldset>
+            @if (@ViewBag.dsTheLoai != null)
+            {
+                for (int i = 0; i < @ViewBag.SLdsTheLoai; i++)
+                {
+                    for (int j = 0; j < @ViewBag.SLdsTLcuaG; j++)
+                    {
+                        if (@Model.Id == @ViewBag.dsTLcuaG[j].GameId)
+                        {
+                            if (@ViewBag.dsTLcuaG[j].TypeGameId == @ViewBag.dsTheLoai[i].Id)
+                            {
+                                <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+                                    <input type="checkbox" id="@ViewBag.dsTheLoai[i].Name" name="@ViewBag.dsTheLoai[i].Name" checked>
+                                    <label> @ViewBag.dsTheLoai[i].Name</label>
+                                </div>
+                                break;
+                            }
+
+                        }
+
+                        if (j == (@ViewBag.SLdsTLcuaG - 1))
+                        {
+                            <div class=" col-lg-4 col-md-4 col-sm-6 col-xs-12 ">
+                                <input type="checkbox" id=@ViewBag.dsTheLoai[i].Name name=@ViewBag.dsTheLoai[i].Name value=@ViewBag.dsTheLoai[i].Name>
+                                <label>@ViewBag.dsTheLoai[i].Name</label>
+                            </div>
+                        }
+                    }
+                }
+            }
+
+            else
+            {
+
+            }
+        </fieldset>
+    </div>
+
     <div class="form-group">
         @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+            <input type="file" value="" name="image" id="image" required title="Chọn đường dẫn hình ảnh" src="model => model.Image" />
+
         </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-2"> <a href="@Url.Action("IndexForAGame", "PlatformDetails",new { id = @Model.Id })">Thay đổi nền tảng</a></label>
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Trailer, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Trailer, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Trailer, "", new { @class = "text-danger" })
+            <input type="file" value="" name="video" id="video" required title="Chọn đường dẫn Video" src="model => model.Trailer" />
         </div>
+
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.PublishDay, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.PublishDay ,"{0:dd/MM/yyyy}",new
+            @Html.EditorFor(model => model.PublishDay, "{0:dd/MM/yyyy}", new
             {
             @type = "date",
             @class = "form-control"

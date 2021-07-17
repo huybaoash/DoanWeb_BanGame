@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DoanWeb_BanGame.Models;
+using PagedList;
 
 namespace DoanWeb_BanGame.Controllers
 {
@@ -15,6 +16,16 @@ namespace DoanWeb_BanGame.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Bills
+        ICollection<TypeGame> dsTheLoai = new List<TypeGame>();
+        ICollection<Platform> dsNentang = new List<Platform>();
+        public BillsController()
+        {
+            HomeController homeController = new HomeController();
+
+            ViewBag.dsTheLoai = homeController.ViewBag.dsTheLoai;
+            ViewBag.dsNentang = homeController.ViewBag.dsNentang;
+
+        }
         public ActionResult Index()
         {
             var bills = db.Bills.Include(b => b.Customer);
@@ -34,7 +45,7 @@ namespace DoanWeb_BanGame.Controllers
             {
                 return HttpNotFound();
             }
-            
+
             return View(bill);
         }
 

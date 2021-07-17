@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DoanWeb_BanGame.Models;
-
+using PagedList;
 
 namespace DoanWeb_BanGame.Controllers
 {
@@ -15,13 +15,23 @@ namespace DoanWeb_BanGame.Controllers
     public class ApplicationUsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        ICollection<TypeGame> dsTheLoai = new List<TypeGame>();
+        ICollection<Platform> dsNentang = new List<Platform>();
+        public ApplicationUsersController()
+        {
+            HomeController homeController = new HomeController();
 
+            ViewBag.dsTheLoai = homeController.ViewBag.dsTheLoai;
+            ViewBag.dsNentang = homeController.ViewBag.dsNentang;
+
+        }
+        [Authorize]
         // GET: ApplicationUsers
         public ActionResult Index()
         {
             return View(db.Users.ToList());
         }
-
+        [Authorize]
         // GET: ApplicationUsers/Details/5
         public ActionResult Details(string id)
         {
@@ -36,7 +46,7 @@ namespace DoanWeb_BanGame.Controllers
             }
             return View(applicationUser);
         }
-
+        [Authorize]
         // GET: ApplicationUsers/Create
         public ActionResult Create()
         {
@@ -46,6 +56,7 @@ namespace DoanWeb_BanGame.Controllers
         // POST: ApplicationUsers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] ApplicationUser applicationUser)
@@ -59,7 +70,7 @@ namespace DoanWeb_BanGame.Controllers
 
             return View(applicationUser);
         }
-
+        [Authorize]
         // GET: ApplicationUsers/Edit/5
         public ActionResult Edit(string id)
         {
@@ -78,6 +89,7 @@ namespace DoanWeb_BanGame.Controllers
         // POST: ApplicationUsers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName,Role")] ApplicationUser applicationUser)
@@ -92,6 +104,7 @@ namespace DoanWeb_BanGame.Controllers
         }
 
         // GET: ApplicationUsers/Delete/5
+        [Authorize]
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -107,6 +120,7 @@ namespace DoanWeb_BanGame.Controllers
         }
 
         // POST: ApplicationUsers/Delete/5
+        [Authorize]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

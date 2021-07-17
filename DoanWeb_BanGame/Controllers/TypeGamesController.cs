@@ -7,12 +7,26 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DoanWeb_BanGame.Models;
+using PagedList;
 
 namespace DoanWeb_BanGame.Controllers
 {
     public class TypeGamesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        ICollection<TypeGame> dsTheLoai = new List<TypeGame>();
+        ICollection<Platform> dsNentang = new List<Platform>();
+        public TypeGamesController()
+        {
+
+            HomeController homeController = new HomeController();
+
+            ViewBag.dsTheLoai = homeController.ViewBag.dsTheLoai;
+            ViewBag.dsNentang = homeController.ViewBag.dsNentang;
+
+        }
+
+       
 
         // GET: TypeGames
         public ActionResult Index()

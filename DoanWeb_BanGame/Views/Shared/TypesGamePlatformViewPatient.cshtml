@@ -1,0 +1,46 @@
+﻿
+<li class="dropdown">
+
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        Thể loại
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        @if (@ViewBag.dsTheLoai != null)
+        {
+            foreach (var item in @ViewBag.dsTheLoai)
+            {
+
+                <li>@Html.ActionLink((string)@item.Name, "Index", "Home")</li>
+            }
+        }
+
+        else
+        {
+
+        }
+    </ul>
+</li>
+
+<li class="dropdown">
+
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+        Nền tảng
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        @if (@ViewBag.dsNentang != null)
+        {
+            foreach (var item in @ViewBag.dsNentang)
+            {
+
+                <li>@Html.ActionLink((string)@item.Name, "Index", "Home")</li>
+            }
+        }
+
+        else
+        {
+
+        }
+    </ul>
+</li>

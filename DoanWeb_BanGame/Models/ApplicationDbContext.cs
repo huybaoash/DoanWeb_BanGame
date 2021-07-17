@@ -26,6 +26,7 @@ namespace DoanWeb_BanGame.Models
     {
            
             public DbSet<Bill> Bills { get; set; }
+            public DbSet<Cart> Carts { get; set; }
             public DbSet<BillDetail> BillDetails { get; set; }
             public DbSet<Game> Games { get; set; }
             public DbSet<Producer> Producers { get; set; }

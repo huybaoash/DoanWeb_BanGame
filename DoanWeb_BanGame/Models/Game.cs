@@ -36,5 +36,6 @@ namespace DoanWeb_BanGame.Models
         [DisplayName("Enable")]
         public bool Enable { get; set; }
         public ICollection<TypeGameDetails> TypeGameDetailsCollection { get; set; }
+        public ICollection<BillDetail> BillDetails { get; set; }
     }
 }

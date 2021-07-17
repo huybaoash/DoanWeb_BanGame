@@ -9,6 +9,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using DoanWeb_BanGame.Models;
+using System.Data.Entity;
+using System.Collections.Generic;
+using PagedList;
+using System.Data;
 
 namespace DoanWeb_BanGame.Controllers
 {
@@ -17,10 +21,17 @@ namespace DoanWeb_BanGame.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private ApplicationDbContext db;
+        private ApplicationDbContext db = new ApplicationDbContext();
+        ICollection<TypeGame> dsTheLoai = new List<TypeGame>();
+        ICollection<Platform> dsNentang = new List<Platform>();
         public AccountController()
         {
-            db = new ApplicationDbContext();
+            HomeController homeController = new HomeController();
+
+            ViewBag.dsTheLoai = homeController.ViewBag.dsTheLoai;
+            ViewBag.dsNentang = homeController.ViewBag.Nentang;
+            
+
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )

@@ -20,7 +20,7 @@ namespace DoanWeb_BanGame.Models
         [Display(Name = "Tổng tiền")]
         public decimal TotalCost { get; set; }
 
-
         public ApplicationUser Customer { get; set; }
+        private ICollection<BillDetail> BillDetails { get; set; }
     }
 }

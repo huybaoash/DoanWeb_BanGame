@@ -7,18 +7,38 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DoanWeb_BanGame.Models;
-
+using PagedList;
 namespace DoanWeb_BanGame.Controllers
 {
     public class PlatformDetailsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        ICollection<TypeGame> dsTheLoai = new List<TypeGame>();
+        ICollection<Platform> dsNentang = new List<Platform>();
+        public PlatformDetailsController()
+        {
+            HomeController homeController = new HomeController();
+
+            ViewBag.dsTheLoai = homeController.ViewBag.dsTheLoai;
+            ViewBag.dsNentang = homeController.ViewBag.dsNentang;
+        }
 
         // GET: PlatformDetails
         public ActionResult Index()
         {
             var platformDetails = db.PlatformDetails.Include(p => p.Game).Include(p => p.Platform);
             return View(platformDetails.ToList());
+        }
+
+        public ActionResult IndexForAGame(int? id)
+        {
+
+            var PDList = db.PlatformDetails.Include(p => p.Game).Include(p => p.Platform).Where(p=>p.GameId == id);
+
+            
+
+            
+            return View(PDList.ToList());
         }
 
         // GET: PlatformDetails/Details/5
@@ -35,6 +55,8 @@ namespace DoanWeb_BanGame.Controllers
             }
             return View(platformDetails);
         }
+
+        
 
         // GET: PlatformDetails/Create
         public ActionResult Create()

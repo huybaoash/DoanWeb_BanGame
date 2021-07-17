@@ -1,19 +1,26 @@
-﻿using System;
+﻿using DoanWeb_BanGame.Models;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using DoanWeb_BanGame.Models;
 
 namespace DoanWeb_BanGame.Controllers
 {
     public class BillDetailsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        ICollection<TypeGame> dsTheLoai = new List<TypeGame>();
+        ICollection<Platform> dsNentang = new List<Platform>();
+        public BillDetailsController()
+        {
+            HomeController homeController = new HomeController();
 
+            ViewBag.dsTheLoai = homeController.ViewBag.dsTheLoai;
+            ViewBag.dsNentang = homeController.ViewBag.dsNentang;
+
+
+        }
         // GET: BillDetails
         public ActionResult Index()
         {
@@ -21,20 +28,38 @@ namespace DoanWeb_BanGame.Controllers
             return View(billDetails.ToList());
         }
 
+        public ActionResult View(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var items = db.BillDetails.Include(b => b.Bill).Include(b => b.Game).Include(b => b.Sale).Where(x => x.BillId == id);
+            return View(items);
+        }
+
         // GET: BillDetails/Details/5
-        
+
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            BillDetail billDetail = db.BillDetails.Find(id);
-            if (billDetail == null)
+
+            List<BillDetail> list = new List<BillDetail>();
+            list = db.BillDetails.ToList();
+            List<BillDetail> listTemp = new List<BillDetail>();
+            listTemp = list;
+            foreach (var i in listTemp)
             {
-                return HttpNotFound();
+                if (i.BillId != id)
+                {
+                    list.Remove(i);
+                }
             }
-            return View(billDetail);
+            return View(list);
         }
 
         // GET: BillDetails/Create

@@ -7,6 +7,7 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -84,6 +85,7 @@
             z-index: 2;
             display: block;
             width: 34px;
+            width: 34px;
             height: 34px;
             line-height: 34px;
             text-align: center;
@@ -119,9 +121,7 @@
         /* On small screens, set height to 'auto' for sidenav and grid */
 
         media screen and (max-width: 767px) {
-        .sidenav
-
-        {
+        .sidenav {
             height: auto;
             padding: 15px;
         }
@@ -183,10 +183,17 @@
         .shopping_cart {
             color: #9d9d9d;
         }
-
         .shopping_cart:hover {
             text-decoration: none;
             color: white;
+        }
+        .navbar li:hover{
+            background-color: lightslategray;
+            color: black
+        }
+        .navbar li:hover {
+            background-color: lightslategray;
+            color: black
         }
     </style>
     
@@ -218,17 +225,7 @@
                         <li>@Html.ActionLink("Đang bán chạy", "Index", "Home")</li>
                     </ul>
                 </li>
-                <li class="dropdown">
-
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                        Thể loại
-                        <span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-
-
-                    </ul>
-                </li>
+                @Html.Partial("TypesGamePlatformViewPatient")
                 <li class="dropdown">
 
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -236,21 +233,20 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("ApplicationUser", "Index", "ApplicationUsers")</li>
-                        <li>@Html.ActionLink("BillDetails", "Index", "BillDetails")</li>
-                        <li>@Html.ActionLink("Bill", "Index", "Bills")</li>
-                        <li>@Html.ActionLink("Sale", "Index", "Sales")</li>
-                        <li>@Html.ActionLink("TypeGame", "Index", "TypeGames")</li>
-                        <li>@Html.ActionLink("TypeGameDetails", "Index", "TypeGameDetails")</li>
-                        <li>@Html.ActionLink("Publisher", "Index", "Publishers")</li>
-                        <li>@Html.ActionLink("Producer", "Index", "Producers")</li>
-                        <li>@Html.ActionLink("Game", "Index", "Games")</li>
-                        <li>@Html.ActionLink("Platform", "Index", "Platforms")</li>
-                        <li>@Html.ActionLink("PlatformDetails", "Index", "PlatformDetails")</li>
+                        <li>@Html.ActionLink("Người dùng", "Index", "ApplicationUsers")</li>
+                        <li>@Html.ActionLink("Hóa đơn", "Index", "Bills")</li>
+                        <li>@Html.ActionLink("Khuyến mãi", "Index", "Sales")</li>
+                        <li>@Html.ActionLink("Thể loại", "Index", "TypeGames")</li>
+                        <li>@Html.ActionLink("Thông tin chi tiết thể loại", "Index", "TypeGameDetails")</li>
+                        <li>@Html.ActionLink("Nhà phát hành", "Index", "Publishers")</li>
+                        <li>@Html.ActionLink("Nhà sản xuất", "Index", "Producers")</li>
+                        <li>@Html.ActionLink("Games", "Index", "Games")</li>
+                        <li>@Html.ActionLink("Nền tảng", "Index", "Platforms")</li>
+                        <li>@Html.ActionLink("Chi tiết nền tảng", "Index", "PlatformDetails")</li>
                     </ul>
                 </li>
             </ul>
-            <div class="col-md-4 col-md-offset-2 a">
+            <div class="col-md-4 a">
                 <form action="" class="search-form">
                     <div class="form-group has-feedback">
                         <label for="search" class="sr-only">Search</label>
@@ -261,7 +257,8 @@
             </div>
 
             <div class="cart nav navbar-nav">
-                <a class="shopping_cart" href="#"><i class="glyphicon glyphicon-shopping-cart"></i> Giỏ hàng (0)</a>
+                <a class="shopping_cart" href="#"><i class="glyphicon glyphicon-shopping-cart"></i>
+                @Html.ActionLink("Giỏ hàng", "Index", "Carts")</a>
             </div>
             <div class="glyphicon-log-in">
                 @Html.Partial("_LoginPartial")
@@ -273,7 +270,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Five Chicken</p>
         </footer>
     </div>
 

@@ -22,5 +22,7 @@ namespace DoanWeb_BanGame.Models
         [DataType(DataType.Date, ErrorMessage = "Date only")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime EndDay { get; set; }
+
+        public ICollection<BillDetail> BillDetails { get; set; }
     }
 }

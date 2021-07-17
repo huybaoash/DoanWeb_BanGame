@@ -4,25 +4,57 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DoanWeb_BanGame.Models;
+using PagedList;
 
 
 namespace DoanWeb_BanGame.Controllers
 {
     public class HomeController : Controller
     {
-        private ApplicationDbContext db;
+        private ApplicationDbContext db = new ApplicationDbContext();
+        ICollection<TypeGame> dsTheLoai = new List<TypeGame>();
+        ICollection<Platform> dsNentang = new List<Platform>();
+
         public HomeController()
         {
-            db = new ApplicationDbContext();
+            TypesGameViewPatient();
         }
 
-        
-        
+        public ActionResult TypesGameViewPatient()
+        {
+            ICollection<TypeGame> tempTG = db.TypeGames.ToList();
+            ICollection<Platform> tempNT = db.Platforms.ToList();
+
+            if (db.TypeGames != null)
+            {
+
+                dsTheLoai = tempTG.ToList();
+                dsNentang = tempNT.ToList();
+                ViewBag.dsTheLoai = dsTheLoai;
+                ViewBag.dsNentang = dsNentang;
+                return PartialView();
+            }
+
+            else
+            {
+                ViewBag.dsTheLoai = null;
+                ViewBag.dsNentang = null;
+                return PartialView();
+            }
+        }
+
         public ActionResult Index()
         {
-            IList<TypeGame> dsTheLoai = new List<TypeGame>();
-            dsTheLoai = db.TypeGames.ToList();
-            ViewBag.dsTheLoai = dsTheLoai;
+            
+
+            ICollection<Game> dsGame = new List<Game>();
+            dsGame = db.Games.ToList();
+
+
+           
+            ViewBag.dsGame = dsGame;
+
+
             return View();
         }
 
